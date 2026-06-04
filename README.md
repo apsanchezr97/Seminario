@@ -1,22 +1,12 @@
 ```mermaid
 graph TD
-    ... (graph TD
 
-    %% ========================================================
-    %% TITULO DEL DIAGRAMA
-    %% Arquitectura As-Is — API Riesgo Crediticio — FinTech Nova
-    %% Laboratorio 1 — Roslaysoft Consulting
-    %% ========================================================
-
-    %% ── ACTOR EXTERNO ────────────────────────────────────
     Cliente(["👤 Cliente FinTech Nova <br> App Movil / Web Browser"]):::actor
 
-    %% ── ZONA INTERNET ────────────────────────────────────
     subgraph id_internet ["🌐 INTERNET / Red Publica"]
         Canal["HTTPS / TLS 1.3 <br> Puerto publico del Codespace"]
     end
 
-    %% ── GITHUB CODESPACES ────────────────────────────────
     subgraph id_codespaces ["☁️ GitHub Codespaces — apsanchezr97/Seminario"]
 
         subgraph id_contenedor ["📦 Contenedor Linux Efimero | VS Code Server"]
@@ -30,7 +20,6 @@ graph TD
         end
     end
 
-    %% ── CONEXIONES / FLUJOS ──────────────────────────────
     Cliente     -->|"HTTPS Request <br> JSON Payload"| Canal
     Canal       -->|"HTTP interno <br> Puerto 8000"| id_fastapi
     id_fastapi  -->|"Procesa request"| EP1
@@ -41,9 +30,8 @@ graph TD
     EP2 -.->|"JSON Response <br> {status: healthy, version: 1.0}"| Cliente
     EP3 -.->|"JSON Response <br> ⚠️ Historial sin restriccion"| Cliente
 
-    %% ── ESTILOS / LEYENDA ────────────────────────────────
     classDef actor            fill:#EBF5FB,stroke:#1A5C9A,stroke-width:2px,color:#0D2B55
     classDef endpoint_safe    fill:#C8DDEF,stroke:#1A5C9A,stroke-width:2px,color:#0D2B55
     classDef endpoint_monitor fill:#D5F5E3,stroke:#1E8449,stroke-width:2px,color:#1E8449
-    classDef endpoint_vuln    fill:#FADBD8,stroke:#C0392B,stroke-width:3px,color:#C0392B)
+    classDef endpoint_vuln    fill:#FADBD8,stroke:#C0392B,stroke-width:3px,color:#C0392B
 ```
