@@ -1,0 +1,24 @@
+cat > .dockerignore << 'EOF'
+# Control de versiones — nunca incluir el historial de Git
+.git/
+.gitignore
+# Archivos de entorno con secretos — NUNCA en la imagen
+.env
+*.env
+# Caché de Python — no útil en el contenedor
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+# Entorno virtual — Docker instala sus propias dependencias
+venv/
+env/
+.venv/
+# Backups y logs — datos de runtime, no del build
+backups/
+*.log
+server.log
+# Documentación — no necesaria en producción
+*.md
+docs/
+EOF

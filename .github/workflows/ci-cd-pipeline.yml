@@ -1,0 +1,36 @@
+ 
+# ┌─────────────────────────────────────────────────────────────┐ 
+# │  Pipeline CI/CD para FinTech Nova                          │ 
+# │  Archivo: .github/workflows/ci-cd-pipeline.yml             │ 
+# └─────────────────────────────────────────────────────────────┘ 
+ 
+name: CI/CD Pipeline - FinTech Nova 
+ 
+on: 
+  push: 
+    branches: 
+      - main 
+ 
+jobs: 
+  build-and-security: 
+    runs-on: ubuntu-latest 
+    steps: 
+ 
+      - name: Descargar código (Checkout) 
+        uses: actions/checkout@v4 
+ 
+      - name: Configurar Python 3.11 
+        uses: actions/setup-python@v4 
+        with: 
+          python-version: '3.11' 
+ 
+      - name: Instalar dependencias 
+        run: pip install -r requirements.txt 
+ 
+      - name: Auditoría de Seguridad (pip-audit) 
+        run: | 
+          pip install pip-audit 
+          pip-audit --requirement requirements.txt 
+ 
+      - name: Construir imagen Docker 
+        run: docker build -t fintech-nova:${{ github.sha }} .
