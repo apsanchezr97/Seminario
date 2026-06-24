@@ -1,0 +1,27 @@
+
+server.log — archivo de logs simulado con ataques 
+
+2024-11-15 08:12:34 INFO  GET /status 200 - IP: 192.168.1.10 
+
+2024-11-15 08:13:01 INFO  POST /evaluar-riesgo 200 - IP: 10.0.0.5 
+
+2024-11-15 08:14:22 INFO  GET /docs 200 - IP: 192.168.1.15 
+
+2024-11-15 08:15:00 WARN  POST /login username=admin'-- IP: 203.0.113.5 
+
+2024-11-15 08:15:01 WARN  POST /login username=' OR '1'='1 IP: 203.0.113.5 
+
+2024-11-15 08:16:45 INFO  GET /status 200 - IP: 192.168.1.10 
+
+2024-11-15 08:17:12 ERROR GET /datos-financieros/1 UNION SELECT * FROM users-- IP: 203.0.113.5 
+
+2024-11-15 08:18:00 INFO  POST /evaluar-riesgo 200 - IP: 10.0.0.6 
+
+2024-11-15 08:19:33 WARN  GET /datos-financieros/1; DROP TABLE users;-- IP: 203.0.113.5 
+
+2024-11-15 08:20:00 INFO  GET /status 200 - IP: 192.168.1.10 
+
+2024-11-15 08:21:05 WARN  POST /login username='; EXEC xp_cmdshell('dir');-- IP: 45.33.32.156 
+
+2024-11-15 08:22:00 INFO  POST /evaluar-riesgo 201 - IP: 10.0.0.7 
+
